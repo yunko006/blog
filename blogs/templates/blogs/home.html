@@ -1,0 +1,31 @@
+{% extends 'blogs/base.html' %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+  <h3>#100DaysofCode</h3>
+{% endblock page_header %}
+{% block content %}
+
+  {% for blog in blogs %}
+    <div class="card mb-3">
+        <h4 class="card-header">
+          <center><a href="{% url 'blogs:post' blog.id %}">{{ blog.title }}</a></center>
+          <center><small> {{ blog.date_added|date:"Y-m-d" }}</small></center>
+        </h4>
+        <div class="card-body">
+          <center>
+            {{ blog.text|truncatewords:30 }}
+          </center>
+        </div>
+        {% buttons %}
+          <center>
+            <a class="btn btn-outline-primary" href="{% url 'blogs:post' blog.id %}">Read more</a>
+          </center>
+        {% endbuttons %}  
+    </div>
+
+  {% empty %}
+      <p>There are no entries for this topic yet</p>
+  {% endfor %}
+
+{% endblock content %}

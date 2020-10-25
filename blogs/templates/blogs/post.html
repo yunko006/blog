@@ -1,0 +1,27 @@
+{% extends 'blogs/base.html' %} 
+{% load bootstrap4 %}
+
+{% block page_header %}
+  <span style="position: absolute; right:170px;">
+    <a style="color: red" href="{% url 'blogs:delete_post' post.id %}">delete post</a>
+  </span>
+  <h3>
+    <center><a href="{% url 'blogs:home' %}">{{ post }}</a></center>
+  </h3>
+
+{% endblock page_header %}
+
+{% block content %}
+
+<div class="card mb-3">
+  <div class="card-body">
+    {{ entries|linebreaks }}
+  </div>
+</div>
+{% buttons %}
+  {% if post.owner == request.user %}
+    <a class="btn btn-primary" href="{% url 'blogs:edit_entry' post.id %}">Edit entry</a>
+  {% endif %}
+{% endbuttons %}
+
+{% endblock content %}
