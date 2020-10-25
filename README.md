@@ -1,5 +1,5 @@
 # blog
-Simple blog project. 
+Simple blog project with Django and bootstrap4
 
 You can : 
 - Create an account
