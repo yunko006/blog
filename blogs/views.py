@@ -64,20 +64,6 @@ def edit_entry(request, post_id):
     context = {"post": post, "text": text, "form": form}
     return render(request, "blogs/edit_entry.html", context)
 
-
-# def delete_entry(request, post_id):
-#     """Delete an existing entry"""
-#     post = BlogPost.objects.get(id=post_id)
-#     entry = post.text
-
-#     if request.method == 'POST':
-#         entry.delete()
-#         return redirect('blogs:home')
-
-#     context = {'post': post, 'entry': entry}
-#     return render(request, 'blogs/delete_entry.html', context)
-
-
 @login_required
 def delete_post(request, post_id):
     """Delete an existing post"""
